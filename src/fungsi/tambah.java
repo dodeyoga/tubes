@@ -22,7 +22,7 @@ public class tambah {
         ArrayList <String> numdata = new ArrayList <String>();
 
         for(int count = 0; count < dataModel.getRowCount(); count++){
-            totalHarga += Double.valueOf(String.valueOf(dataModel.getValueAt(count, 4).toString()));
+            totalHarga += Double.valueOf(String.valueOf(dataModel.getValueAt(count, 5).toString()));
         }
         return totalHarga;
     }
