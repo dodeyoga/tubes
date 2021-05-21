@@ -374,8 +374,9 @@ public class beli extends javax.swing.JFrame {
         DefaultTableModel dataModel = (DefaultTableModel) tabel_data.getModel();
         
         if(tabel_data.getSelectedRow() >= 0){
-           int i = JOptionPane.showConfirmDialog(null, "Yakin Mau Hapus?","Konfirmasi",JOptionPane.YES_NO_OPTION); {
-                    dataModel.removeRow(i);
+           int i = JOptionPane.showConfirmDialog(null, "Yakin Mau Hapus?","Konfirmasi",JOptionPane.YES_NO_OPTION); 
+                if (i == 0){
+                    dataModel.removeRow(tabel_data.getSelectedRow());
                 }
         }
         txt_total_harga.setText(String.valueOf(totalharga.totalHarga(dataModel)));

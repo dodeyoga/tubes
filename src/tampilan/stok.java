@@ -11,19 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.*;
-
 /**
  *
  * @author USER
  */
-public class transaksi extends javax.swing.JFrame {
+public class stok extends javax.swing.JFrame {
 
     Connection koneksi;
     Statement stat;
     ResultSet rs;
     String sql;
     
-    public transaksi() {
+    public stok() {
         initComponents();
         
         koneksi DB = new koneksi();
@@ -32,24 +31,22 @@ public class transaksi extends javax.swing.JFrame {
         this.stat = DB.getStm();
         
         getData();
-        
     }
     
     public void getData(){
 
         try {
-            sql = "SELECT * FROM tb_transaksi";
+            sql = "SELECT * FROM tb_barang";
             rs = stat.executeQuery(sql);
             int i = 1;
             while(rs.next()){
-                DefaultTableModel dataModel = (DefaultTableModel) tbl_transaksi.getModel();
-                tbl_transaksi.setModel(dataModel);
+                DefaultTableModel dataModel = (DefaultTableModel) tbl_stok.getModel();
+                tbl_stok.setModel(dataModel);
                 List list = new ArrayList<>();
                 list.add(i);
-                list.add(rs.getString("waktu"));
-                list.add(rs.getString("id_transaksi"));
-                list.add(rs.getString("jenis_transaksi"));
-                list.add(rs.getString("pengeluaran"));
+                list.add(rs.getString("kode_barang"));
+                list.add(rs.getString("nama_barang"));
+                list.add(rs.getString("jumlah_barang"));
                 dataModel.addRow(list.toArray());
                 i++;
             }
@@ -57,7 +54,6 @@ public class transaksi extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
 }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,22 +64,25 @@ public class transaksi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_transaksi = new javax.swing.JTable();
-        btn_menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_stok = new javax.swing.JTable();
+        btn_menu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tbl_transaksi.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setText("STOK BARANG");
+
+        tbl_stok.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "No.", "Waktu", "ID Transaksi", "Jenis Transaksi", "Pengeluaran (Rp.)"
+                "No.", "Kode Barang", "Nama Barang", "Jumlah Barang"
             }
         ));
-        jScrollPane1.setViewportView(tbl_transaksi);
+        jScrollPane1.setViewportView(tbl_stok);
 
         btn_menu.setText("Menu");
         btn_menu.addActionListener(new java.awt.event.ActionListener() {
@@ -92,39 +91,31 @@ public class transaksi extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("RIWAYAT TRANSAKSI");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_menu)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(156, 156, 156))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                    .addComponent(btn_menu)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btn_menu)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -152,20 +143,20 @@ public class transaksi extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(stok.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(stok.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(stok.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(transaksi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(stok.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new transaksi().setVisible(true);
+                new stok().setVisible(true);
             }
         });
     }
@@ -174,6 +165,6 @@ public class transaksi extends javax.swing.JFrame {
     private javax.swing.JButton btn_menu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_transaksi;
+    private javax.swing.JTable tbl_stok;
     // End of variables declaration//GEN-END:variables
 }

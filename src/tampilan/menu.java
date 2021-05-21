@@ -30,6 +30,7 @@ public class menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_belibarang = new javax.swing.JButton();
         btn_transaksi = new javax.swing.JButton();
+        btn_stok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,13 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        btn_stok.setText("Stok Barang");
+        btn_stok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_stokActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +71,8 @@ public class menu extends javax.swing.JFrame {
                         .addGap(133, 133, 133)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_transaksi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_belibarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btn_belibarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_stok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -74,8 +83,10 @@ public class menu extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(btn_belibarang)
                 .addGap(18, 18, 18)
+                .addComponent(btn_stok)
+                .addGap(18, 18, 18)
                 .addComponent(btn_transaksi)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
@@ -90,6 +101,11 @@ public class menu extends javax.swing.JFrame {
         new beli().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_belibarangActionPerformed
+
+    private void btn_stokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_stokActionPerformed
+        new stok().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_stokActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +144,7 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_belibarang;
+    private javax.swing.JButton btn_stok;
     private javax.swing.JButton btn_transaksi;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
