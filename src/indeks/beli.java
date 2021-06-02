@@ -215,7 +215,7 @@ public class beli extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_total_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
@@ -367,16 +367,13 @@ public class beli extends javax.swing.JFrame {
         
         DefaultTableModel dataModel = (DefaultTableModel) tabel_data.getModel();
         
-        
-        if(tabel_data.getSelectedRow()+1 > 0){
+        if(tabel_data.getSelectedRow() >= 0){
            int i = JOptionPane.showConfirmDialog(null, "Yakin Mau Hapus?","Konfirmasi",JOptionPane.YES_NO_OPTION); 
                 if (i == 0){
                     dataModel.removeRow(tabel_data.getSelectedRow());
                 }
-                txt_total_harga.setText(String.valueOf(totalharga.totalHarga(dataModel)));
-        }else{
-            JOptionPane.showMessageDialog(null, "Data Kosong !!!, Silahkan Diisi Terlebih Dahulu");
         }
+        txt_total_harga.setText(String.valueOf(totalharga.totalHarga(dataModel)));
     }//GEN-LAST:event_btn_hapus_barangActionPerformed
 
     private void btn_beli_barangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_beli_barangActionPerformed
