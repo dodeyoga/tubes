@@ -23,7 +23,7 @@ public class koneksi {
     public void config(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            koneksi = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_restaurant", "admin", "admin");
+            koneksi = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_restaurant", "root", "root");
             stm = koneksi.createStatement();
             System.out.println("Koneksi Berhasil");
         } catch (ClassNotFoundException | SQLException e) {
